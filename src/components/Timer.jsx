@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { Play, Pause, RotateCcw } from "lucide-react";
 
 const WORK_TIME = 20 * 60;
 const BREAK_TIME = 20;
@@ -235,14 +236,18 @@ export default function Timer() {
                   : "btn-gradient shadow-[0_4px_20px_rgba(99,102,241,0.4)] hover:shadow-[0_6px_30px_rgba(99,102,241,0.5)]"
               }`}
             >
-              <span className="text-sm">{isRunning ? "⏸" : "▶"}</span>
+              {isRunning ? (
+                <Pause className="w-4 h-4" />
+              ) : (
+                <Play className="w-4 h-4" />
+              )}
               <span>{isRunning ? "Pause" : "Start"}</span>
             </button>
             <button
               onClick={handleReset}
               className="flex items-center justify-center gap-2 px-4 md:px-6 py-3 rounded-full font-medium text-white/70 bg-white/10 border border-white/10 cursor-pointer transition-all duration-300 hover:bg-white/15 hover:text-white"
             >
-              <span className="text-sm">↺</span>
+              <RotateCcw className="w-4 h-4" />
               <span className="hidden md:inline">Reset</span>
             </button>
           </div>
@@ -305,8 +310,9 @@ export default function Timer() {
         </section>
       </main>
 
-      <footer className="flex justify-center p-3 md:p-4 text-white/40 text-xs md:text-sm ">
+      <footer className="text-center p-3 md:p-4 text-white/40 text-xs md:text-sm ">
         <p>Take care of your eyes 💜</p>
+        <p>── ⋆⋅☆⋅⋆ ──</p>
       </footer>
     </div>
   );
